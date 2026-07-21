@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/blender_3dprint/',
+  base: '/blender_basics/',
 })
