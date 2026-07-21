@@ -3,79 +3,79 @@ export const installStepsData = [
     step: 1,
     title: "1. 공식 홈페이지 접속 및 설치 파일 다운로드",
     desc: "블렌더 공식 웹사이트(<a href='https://www.blender.org/download/' target='_blank' rel='noopener noreferrer' class='external-link'>blender.org/download ↗</a>)에 접속하여 'Download Blender' (Windows Installer LTS 최신 버전) 버튼을 클릭하여 설치 프로그램(.msi)을 다운로드합니다.",
-    img: "/images/install/01.png"
+    img: "./images/install/01.png"
   },
   {
     step: 2,
     title: "2. 설치 마법사(Setup Wizard) 시작",
     desc: "다운로드한 설치 파일을 실행하면 Blender 마법사 안내 창이 나타납니다. 'Next' 버튼을 클릭합니다.",
-    img: "/images/install/02.png"
+    img: "./images/install/02.png"
   },
   {
     step: 3,
     title: "3. 설치 폴더 경로 확인 및 지정",
     desc: "블렌더가 설치될 컴퓨터 경로(기본: C:\\Program Files\\Blender Foundation\\Blender\\)를 확인하고 'Next'를 누릅니다.",
-    img: "/images/install/03.png"
+    img: "./images/install/03.png"
   },
   {
     step: 4,
     title: "4. 설치 실행 준비 완료",
     desc: "'Ready to install Blender' 화면에서 'Install' 버튼을 눌러 실제 파일 설치를 시작합니다.",
-    img: "/images/install/04.png"
+    img: "./images/install/04.png"
   },
   {
     step: 5,
     title: "5. 시스템 구성 요소 등록 진행",
     desc: "3D 그래픽 엔진 및 관련 라이브러리 구성 요소가 등록되는 동안 잠시 기다립니다.",
-    img: "/images/install/05.png"
+    img: "./images/install/05.png"
   },
   {
     step: 6,
     title: "6. 파일 복사 및 설치 마무리",
     desc: "새로운 3D 렌더링 엔진 파일들이 지정된 디렉터리로 복사되며 인스톨이 완료됩니다.",
-    img: "/images/install/06.png"
+    img: "./images/install/06.png"
   },
   {
     step: 7,
     title: "7. 블렌더 설치 완료 확인",
     desc: "'Completed the Blender Setup Wizard' 문구가 뜨면 'Finish' 버튼을 눌러 마법사를 종료합니다.",
-    img: "/images/install/07.png"
+    img: "./images/install/07.png"
   },
   {
     step: 8,
     title: "8. 후원재단 안내 페이지 (선택)",
     desc: "오픈소스 블렌더 재단 안내 웹페이지가 열립니다. 확인 후 창을 닫거나 블렌더를 실행합니다.",
-    img: "/images/install/08.png"
+    img: "./images/install/08.png"
   },
   {
     step: 9,
     title: "9. 블렌더 첫 실행 및 기본 영문 설정 화면",
     desc: "설치된 블렌더를 처음 실행하면 영문 웰컴 스플래시(Splash Screen) 상자가 나타납니다.",
-    img: "/images/install/09.png"
+    img: "./images/install/09.png"
   },
   {
     step: 10,
     title: "10. 언어(Language) 드롭다운에서 한국어 선택",
     desc: "'Language' 드롭다운 메뉴를 클릭하고 목록에서 'Korean - 한국어'를 찾아서 선택합니다.",
-    img: "/images/install/10.png"
+    img: "./images/install/10.png"
   },
   {
     step: 11,
     title: "11. 한글 언어 설정 환경 저장",
     desc: "화면 UI 텍스트가 한국어로 변경된 것을 확인하고 하단의 파란색 '새로운 환경설정 저장' 버튼을 누릅니다.",
-    img: "/images/install/11.png"
+    img: "./images/install/11.png"
   },
   {
     step: 12,
     title: "12. 한국어 지원 스플래시 확인",
     desc: "'새로운 파일 (일반, 2D 애니메이션, 조각 등)' 메뉴가 한글로 표시되는지 검수합니다.",
-    img: "/images/install/12.png"
+    img: "./images/install/12.png"
   },
   {
     step: 13,
     title: "13. 3D 뷰포트 작업 공간 한글화 완료",
     desc: "상단 메뉴(파일, 편집, 렌더, 창, 도움말) 및 우측 아웃라이너 탭이 한국어로 변경되어 준비가 완료되었습니다!",
-    img: "/images/install/13.png"
+    img: "./images/install/13.png"
   }
 ];
 
@@ -107,7 +107,7 @@ export const coursesData = [
               {
                 subTitle: "1) Header (헤더 / 상단 메뉴바)",
                 subDesc: "상단 메인 메뉴(파일, 편집, 렌더, 창, 도움말), 워크스페이스 탭(Layout, Modeling, Sculpting, Shading 등) 및 뷰포트 헤더 옵션(Object Mode/Edit Mode 전환, 트랜스폼 좌표계 등)의 기본 구성과 기능을 이해합니다.",
-                img: "/images/header.png"
+                img: "./images/header.png"
               },
               {
                 subTitle: "2) 3D Viewport (3D 뷰포트)",
@@ -117,7 +117,7 @@ export const coursesData = [
                   "Sidebar (사이드바 - 오른쪽): 선택한 오브젝트의 정확한 위치(Location), 회전(Rotation), 크기(Scale) 수치 및 플러그인 메뉴가 위치합니다. (단축키: N 키로 숨기기/열기)",
                   "Navigation Gizmo (기즈모 - 우상단): 축 아이콘(X, Y, Z)을 클릭/드래그하여 정면, 측면, 탑뷰 등으로 시점을 전환합니다."
                 ],
-                img: "/images/viewport.png"
+                img: "./images/viewport.png"
               },
               {
                 subTitle: "3) Outliner (아웃라이너 / 우측 상단)",
@@ -126,7 +126,7 @@ export const coursesData = [
                   "Collection (컬렉션): 폴더처럼 오브젝트들을 그룹화하여 관리합니다.",
                   "표시/비활성화 (눈/모니터 아이콘): 특정 오브젝트를 뷰포트에서 숨기거나 렌더링 대상에서 제외할 수 있습니다."
                 ],
-                img: "/images/outliner.png",
+                img: "./images/outliner.png",
                 imgWidth: "50%"
               },
               {
@@ -142,7 +142,7 @@ export const coursesData = [
                     ["Material (매터리얼)", "재질 세팅", "색상, 광택(Roughness), 금속성(Metallic) 등 질감 부여"]
                   ]
                 },
-                img: "/images/properties.png",
+                img: "./images/properties.png",
                 imgWidth: "40%"
               },
               {
@@ -151,7 +151,7 @@ export const coursesData = [
                 details: [
                   "재생/정지 버튼과 프레임 이동, 애니메이션 길이 설정이 가능합니다."
                 ],
-                img: "/images/timeline.png"
+                img: "./images/timeline.png"
               },
               {
                 subTitle: "6) Area Edge Options (패널 영역 분할 & 합치기)",
@@ -163,9 +163,9 @@ export const coursesData = [
                   "영역 교환 (Swap Areas): 서로 인접한 두 영역의 화면 위치를 맞바꿉니다.",
                   "💡 <b>레이아웃 초기화</b>: 화면이 꼬였을 땐 상단 탭 우측 <b>'+' (Add Workspace) ➔ General ➔ Layout</b> 추가 후, 기존 꼬인 Layout 탭을 우클릭하여 Delete로 삭제합니다."
                 ],
-                img: "/images/area_edge_options.png",
+                img: "./images/area_edge_options.png",
                 imgWidth: "50%",
-                img2: "/images/timeline_close.png",
+                img2: "./images/timeline_close.png",
                 img2Width: "40%",
                 img2Title: "타임라인 헤더/경계선 마우스 우클릭 > '영역 닫기' (실전 응용)"
               }
