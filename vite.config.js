@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/blender3d/',
+  base: '/blender_3dprint/',
   build: {
-    outDir: 'dist/blender3d'
+    outDir: 'dist'
   },
   plugins: [],
 })
