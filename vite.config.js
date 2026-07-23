@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/blender3d/',
+  base: '/blender_3dprint/',
   plugins: [],
 })
