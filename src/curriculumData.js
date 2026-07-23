@@ -248,12 +248,12 @@ export const coursesData = [
           {
             step: 5,
             title: "5. 스트랩 구멍 뚫기 & 베벨(Bevel) 적용",
-            desc: "Edit Mode(Tab)에서 모서리를 선택하고 Ctrl + B로 모서리를 부드럽게 깎아 손상을 방지하며 스트랩용 원형 구멍 뚫기"
+            desc: "Add > Mesh > Cylinder(Shift + A)를 추가하고, 모디파이어 블린 기능으로 구멍을 뚫습니다."
           },
           {
             step: 6,
             title: "6. 텍스트 추가 및 3D 솔리드화",
-            desc: "Add > Text로 텍스트 오브젝트 생성 후 원하는 이름 입력, Geometry Extrude로 2mm 두께감 부여 후 플레이트에 결합"
+            desc: "Add > Text로 텍스트 오브젝트 생성 후 원하는 이름 입력, 메쉬로 변환해서 두께는 솔리드파이로 적용"
           }
         ],
         hotkeys: [
@@ -289,31 +289,190 @@ export const coursesData = [
         badge: "기초 실용 / 모디파이어",
         objectType: "phone_stand",
         outcomes: [
-          "불리언(Boolean) 모디파이어를 이용한 차집합(Difference) 결합 원리 이해",
-          "점(Vertex), 선(Edge), 면(Face) 선택 모드 및 Extrude(돌출 E), Inset(삽입 I) 실습",
-          "스마트폰 경사각(60°~70°) 및 거치 홈 정밀 수치 모델링",
-          "기본 재질 색상 부여 및 매터리얼 매핑 시각화"
+          "복제, 결합, 정렬 및 Boolean 모디파이어 활용",
+          "점, 선, 면 선택 및 돌출, 삽입 등 편집 기능 실습",
+          "재질 색상 변경과 간단한 이미지 텍스처 적용"
         ],
         steps: [
           {
             step: 1,
-            title: "거치대 메인 블록 바디 조형",
-            desc: "기본 큐브에서 시작하여 원하는 높이(80mm)와 폭(65mm)으로 스케일 지정 후 스마트폰 받침대 경사면 형성"
+            title: "복제, 결합, 정렬 및 Boolean 모디파이어 활용",
+            desc: "오브젝트를 복제하고 결합 및 정렬한 뒤 Boolean 모디파이어를 통해 원하는 형태를 결합·분리하는 방법을 배웁니다.",
+            subItems: [
+              {
+                subTitle: "1. 오브젝트 복제하기 (Duplicate)",
+                subDesc: "3D 모델링 작업 효율을 높여주는 두 가지 핵심 복제 방법을 비교하며 알아봅니다.",
+                details: [
+                  "<div style='font-size: 0.9rem; font-weight: 700; color: #1e3a8a; margin-top: 0.4rem;'>① 기본 복제하기: Shift + D</div>",
+                  "가장 일반적으로 쓰이는 <b>완전 독립형 복제</b>입니다.",
+                  "<b>방법</b>: 복제할 개체를 선택한 후 Shift + D 키를 누릅니다.",
+                  "<b>이동</b>: 키를 누르자마자 마우스 움직임에 따라 복제본이 바로 따라옵니다. 원하는 위치에서 마우스 좌클릭 또는 Enter를 누르면 고정됩니다.",
+                  "<b>특징</b>: 복제본과 원본이 완전히 별개의 데이터로 분리됩니다. 원본을 수정해도 복제본에는 아무런 영향이 없습니다.",
+                  "<div style='background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 0.6rem 0.9rem; margin-top: 0.5rem; font-size: 0.82rem; color: #1e3a8a;'><p style='margin-bottom: 0.3rem;'>💡 <b>축 고정 팁</b></p><p style='margin-bottom: 0;'>Shift + D를 누른 후 바로 X, Y, Z 키 중 하나를 누르면 해당 좌표축으로만 직선 이동하여 깔끔하게 정렬할 수 있습니다.</p></div>",
+                  "<div style='margin-top: 1.5rem; font-size: 0.9rem; font-weight: 700; color: #1e3a8a;'>② 링크 복제하기: Alt + D</div>",
+                  "원본의 형태(Mesh Data)를 공유하는 <b>\"분신\" 복제</b>입니다.",
+                  "<b>방법</b>: 복제할 개체를 선택한 후 Alt + D 키를 누릅니다.",
+                  "<b>특징</b>: 원본과 복제본의 위치/회전/크기는 따로 조절할 수 있지만, 모양(편집 모드에서의 수정사항)은 서로 공유됩니다. 한쪽 개체의 편집 모드(Tab)에서 점·선·면을 수정하면 나머지 모든 링크 복제본도 동시에 똑같이 수정됩니다.",
+                  "<b>활용</b>: 나무, 기둥, 나사처럼 같은 디자인이 반복해서 쓰이는 3D 씬을 만들 때 유용합니다. 메모리 사용량도 훨씬 적고 관리하기도 편리합니다."
+                ],
+                img: "./images/duplicate_compare.png",
+                imgWidth: "70%"
+              },
+              {
+                subTitle: "2. 오브젝트 결합 및 연산 (Join & Boolean)",
+                subDesc: "독립된 오브젝트들을 하나로 합치거나 연산하는 방식의 차이를 배웁니다.",
+                details: [
+                  "<div style='font-size: 0.9rem; font-weight: 700; color: #1e3a8a; margin-top: 0.4rem;'>① 개체 단일화: Ctrl + J (Join)</div>",
+                  "독립된 여러 오브젝트를 하나의 단일 오브젝트로 통합할 때 사용하는 가장 기본적인 방식입니다.",
+                  "<b>단축키</b>: Ctrl + J",
+                  "<b>방법</b>: 합치고 싶은 개체들을 Shift를 누른 채 여러 개 선택합니다. 가장 마지막에 클릭한 개체가 '활성 개체(Active Object, 노란색 테두리)'가 됩니다. Ctrl + J를 누르면 선택한 모든 개체가 마지막에 선택한 개체의 이름과 주황색 피봇(Pivot) 기준으로 통합됩니다.",
+                  "<b>특징</b>: 단순히 데이터를 하나로 합치는 것이므로, 내부의 겹쳐진 면이나 점들은 뚫고 지나가는 상태 그대로 유지됩니다.",
+                  "<div style='margin-top: 1.5rem; font-size: 0.9rem; font-weight: 700; color: #16a34a;'>② 형체 결합/차집합/교집합: 부울 모디파이어 (Boolean Modifier)</div>",
+                  "두 개체의 겹치는 형태를 이용해 뗌빵을 내거나, 도려내거나, 겉면을 깔끔하게 하나로 녹여 합칠 때 사용합니다.",
+                  "오브젝트 설정창의 Modifier Properties(스패너 아이콘) > Add Modifier > Boolean에서 적용할 수 있으며, 3가지 모드가 있습니다.",
+                  "<b>Union (합집합)</b>: 두 개체가 겹친 내부의 불필요한 면을 자동으로 제거하고, 겉면만 깔끔하게 연결된 하나의 개체로 만들어 줍니다.",
+                  "<b>Difference (차집합)</b>: 기준 개체에서 타겟 개체만큼 구멍을 뚫거나 잘라냅니다.",
+                  "<b>Intersect (교집합)</b>: 두 개체가 서로 겹치는 부위만 남기고 나머지는 삭제합니다.",
+                  "<div style='background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 0.6rem 0.9rem; margin-top: 0.5rem; font-size: 0.82rem; color: #1e3a8a;'><p style='margin-bottom: 0.3rem;'>💡 <b>간단 적용 팁</b></p><p style='margin-bottom: 0;'>블렌더 기본 내장 플러그인인 <b>Auto Boolean (BoolTool)</b>을 활성화하면, 두 개체를 선택하고 Ctrl + Shift + Numpad + 키를 누르는 것만으로 즉시 Union 결합을 처리할 수 있습니다.</p></div>"
+                ]
+              },
+              {
+                subTitle: "3. 오브젝트 정렬하기 (Align & Snap)",
+                subDesc: "두 개체를 정확한 위치와 각도로 맞추는 필수 정렬 기능을 배웁니다.",
+                details: [
+                  "<div style='font-size: 0.9rem; font-weight: 700; color: #1e3a8a; margin-top: 0.4rem;'>① 두 개체의 위치/회전 한 번에 맞추기: Align Objects</div>",
+                  "A 오브젝트를 B 오브젝트의 위치나 회전값에 정확히 일치시키고 싶을 때 사용합니다.",
+                  "<b>방법</b>: 정렬시킬 개체를 먼저 선택하고, 기준이 될 개체를 나중에 선택합니다 (Shift + 클릭).",
+                  "상단 메뉴에서 Object > Transform > Align Objects를 클릭합니다.",
+                  "좌측 하단에 뜨는 Align Objects 패널에서 옵션을 설정합니다:",
+                  "- <b>Align System</b>: World (전체 좌표 기준) 또는 Local (개체 자체 좌표 기준)",
+                  "- <b>X / Y / Z 축</b>: 정렬하고 싶은 좌표축 체크",
+                  "- <b>High / Low / Center</b>: 개체의 끝면(최대/최소)을 맞출지, 중심을 맞출지 선택",
+                  "<div style='margin-top: 0.8rem; margin-bottom: 0.8rem; border-radius: 6px; overflow: hidden; border: 1px solid #cbd5e1; padding: 0.3rem; background: #fafafa; display: inline-block;'><img src='./images/align_objects_panel.png' alt='Align Objects Panel' style='height: 200px; width: auto; display: block; object-fit: contain;' /></div>",
+                  "<div style='margin-top: 1.5rem; font-size: 0.9rem; font-weight: 700; color: #1e3a8a;'>② 정밀하게 들러붙게 만들기: 스냅(Snap) 기능</div>",
+                  "<div style='display: flex; gap: 1rem; margin-top: 0.8rem; margin-bottom: 0.8rem; flex-wrap: wrap;'><div style='border-radius: 6px; overflow: hidden; border: 1px solid #cbd5e1; padding: 0.3rem; background: #fafafa;'><img src='./images/snap_menu.png' alt='Snap Menu Panel' style='height: 250px; width: auto; display: block; object-fit: contain;' /></div><div style='border-radius: 6px; overflow: hidden; border: 1px solid #cbd5e1; padding: 0.3rem; background: #fafafa;'><img src='./images/snap_menu_2.png' alt='Snap Menu Settings' style='height: 250px; width: auto; display: block; object-fit: contain;' /></div></div>",
+                  "건축 모델링이나 딱 들어맞는 부품을 배치할 때 사용하는 강력한 정렬 방식입니다.",
+                  "상단 중앙의 자석 아이콘 (Shift + Tab)을 눌러 활성화하거나, G 키로 이동 중 Ctrl 키를 누르면 스냅이 작동합니다.",
+                  "<b>Snap To (정렬 대상 설정)</b>:",
+                  "- <b>Increment</b>: 그리드 격자에 맞춰 이동",
+                  "- <b>Vertex</b>: 다른 개체의 '점'에 착 붙여서 정렬",
+                  "- <b>Edge / Face</b>: 다른 개체의 '선'이나 '면'에 맞추어 정렬",
+                  "<b>Align Rotation to Target (회전 맞춤)</b>:",
+                  "스냅 옵션 중 Align Rotation to Target을 체크해두면, 경사진 면에 개체를 가져다 댔을 때 면의 각도에 맞게 개체가 알아서 회전하며 정렬됩니다."
+                ]
+              }
+            ]
           },
           {
             step: 2,
-            title: "Extrude(E) & Loop Cut(Ctrl+R)으로 슬롯 제작",
-            desc: "Ctrl + R로 분할선을 추가하고, 스마트폰 두께(12mm~15mm)에 맞춰 받침 홈을 돌출 및 파내기"
+            title: "점, 선, 면 선택 및 돌출, 삽입 등 편집 기능 실습",
+            desc: "에디트 모드(Edit Mode)에서 점(Vertex), 선(Edge), 면(Face)을 세밀하게 제어하고 Extrude(E), Inset(I) 등 필수 편집 도구를 익힙니다.",
+            subItems: [
+              {
+                subTitle: "1. 모드 전환 및 선택 모드 (1, 2, 3)",
+                subDesc: "오브젝트의 전체적인 형태를 다루는 오브젝트 모드에서 세부 형태를 변형할 수 있는 에디트 모드로 전환해야 합니다.",
+                img: "./images/edit_mode_switch.png",
+                imgPos: "top",
+                details: [
+                  "<b>에디트 모드 전환</b>: Tab 키",
+                  "<b>선택 요소 전환 (상단 자판 숫자키)</b>:",
+                  "- <b>1</b> : 점 (Vertex) 선택 모드 — 모서리나 끝점을 다룰 때",
+                  "- <b>2</b> : 선 (Edge) 선택 모드 — 변이나 테두리를 다룰 때",
+                  "- <b>3</b> : 면 (Face) 선택 모드 — 평면 전체를 다룰 때",
+                  "<div style='background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 0.6rem 0.9rem; margin-top: 0.5rem; font-size: 0.82rem; color: #1e3a8a;'><p style='margin-bottom: 0.3rem;'>💡 <b>선택 팁</b></p><ul style='margin-bottom: 0; padding-left: 1rem;'><li style='margin-bottom: 0.2rem;'><b>A</b>: 전체 선택 / <b>Alt + A</b>: 전체 선택 해제</li><li style='margin-bottom: 0.2rem;'><b>Alt + 클릭</b>: 연속된 선/면 흐름 한 번에 선택 (루프 선택)</li><li style='margin-bottom: 0;'><b>Box Select(B) / Circle Select(C)</b>: 드래그해서 여러 개 한 번에 선택</li></ul></div>"
+                ]
+              },
+              {
+                subTitle: "2. 필수 단축키 4",
+                subDesc: "선택한 점, 선, 면을 제어하기 위한 필수 단축키입니다.",
+                table: {
+                  headers: ["기능", "단축키", "설명"],
+                  rows: [
+                    ["이동 (Move)", "G", "선택한 점/선/면을 이동 (축 고정: G → X/Y/Z)"],
+                    ["회전 (Rotate)", "R", "선택한 점/선/면을 회전"],
+                    ["크기 (Scale)", "S", "선택한 점/선/면의 크기를 조절"],
+                    ["엑스레이 (X-Ray)", "Alt + Z", "투시 모드 (반대편 숨겨진 점/선/면 투과 선택시 필수)<br><div style='margin-top: 0.5rem;'><img src='./images/xray_mode.png' alt='X-Ray Mode' style='width: 40%; height: auto; border-radius: 4px; border: 1px solid #cbd5e1;' /></div>"]
+                  ]
+                }
+              },
+              {
+                subTitle: "3. 다양한 돌출 (Extrude) 기능 알아보기",
+                subDesc: "",
+                details: [
+                  "<div style='display: flex; gap: 1.5rem; align-items: flex-start;'><div style='flex: 0 0 160px;'><img src='./images/extrude_menu.png' style='width: 100%; height: auto; border-radius: 6px; border: 1px solid #cbd5e1;' alt='Extrude Menu' /></div><div style='flex: 1;'><div style='font-size: 0.9rem; font-weight: 700; color: #1e3a8a;'>① 지역 돌출 (Extrude Region)</div><div style='margin-bottom: 0.3rem;'>가장 대표적인 기본 돌출 방식입니다.</div><div style='margin-bottom: 1.2rem;'>선택한 여러 개의 면을 하나의 덩어리로 묶어서 동일한 축 방향(선택면의 평균 법선 방향)으로 뽑아냅니다.</div><div style='font-size: 0.9rem; font-weight: 700; color: #1e3a8a;'>② 매니폴드 돌출 (Extrude Manifold)</div><div style='margin-bottom: 0.3rem;'>3D 형태의 구조를 깨뜨리지 않고 스마트하게 밀고 넣는 기능입니다.</div><div style='margin-bottom: 1.2rem;'>일반 돌출로 면을 내부로 밀어 넣으면 불필요한 면이 겹쳐 꼬이지만, 매니폴드 돌출은 겹치는 옆면과 내부 면을 자동 삭제 및 재정리하여 구멍을 뚫어줍니다.</div><div style='font-size: 0.9rem; font-weight: 700; color: #1e3a8a;'>③ 노멀을 따라 돌출 (Extrude Along Normals)</div><div style='margin-bottom: 0.3rem;'>선택한 각 면이 바라보는 수직 방향(노멀)으로 부풀리거나 줄이는 방식입니다.</div><div style='margin-bottom: 1.2rem;'>구(Sphere)나 원기둥처럼 굴곡이 있는 복합 면을 돌출할 때 왜곡 없이 팽창하듯 늘어납니다.</div><div style='font-size: 0.9rem; font-weight: 700; color: #1e3a8a;'>④ 개별 돌출 (Extrude Individual)</div><div style='margin-bottom: 0.3rem;'>선택한 면들이 붙어 있어도 각각 독립된 개체로 돌출시킵니다.</div><div style='margin-bottom: 1.2rem;'>면과 면 사이가 연결되지 않고 각자의 정면으로 솟아올라 독립된 기둥 형태가 됩니다.</div><div style='font-size: 0.9rem; font-weight: 700; color: #1e3a8a;'>⑤ 커서로 돌출 (Extrude to Cursor)</div><div style='margin-bottom: 0.3rem;'>3D 뷰포트에서 마우스 클릭 위치를 향해 연속해서 면을 뽑아냅니다.</div><div style='margin-bottom: 0;'>클릭할 때마다 선택 면이 해당 위치까지 늘어나 곡선이나 뼈대를 빠르게 확장합니다.</div></div></div>"
+                ]
+              },
+              {
+                subTitle: "4. 인셋 (Inset Faces) 도구 알아보기",
+                subDesc: "선택한 면(Face)의 테두리를 따라 안쪽(또는 바깥쪽)에 동일한 비율의 새로운 면을 추가하는 도구입니다.",
+                img: "./images/inset_faces.png",
+                imgPos: "top",
+                details: [
+                  "<div style='font-size: 0.9rem; font-weight: 700; color: #1e3a8a; margin-top: 0.4rem;'>① 기본 정보 및 단축키</div>",
+                  "- <b>단축키</b>: I (Edit Mode의 Face 선택 모드 3에서 실행)",
+                  "- <b>툴바 단축키</b>: Shift + Spacebar 누른 뒤 I",
+                  "<div style='margin-top: 1.5rem; font-size: 0.9rem; font-weight: 700; color: #1e3a8a;'>② 주요 동작 방식 및 특징</div>",
+                  "<b>안쪽 면 생성</b>: 선택한 면 안쪽으로 일정한 간격의 모서리를 생성해 작은 면을 만들어냅니다.",
+                  "<b>돌출(Extrude, E)과의 조합</b>:",
+                  "- I로 안쪽 면을 만든 후 E로 밀어 넣으면 ➔ 액자, 창문, 홈, 박스 내부 공간",
+                  "- I로 안쪽 면을 만든 후 E로 뽑아내면 ➔ 단추, 피스톤, 건물 베란다",
+                  "<div style='margin-top: 1.5rem; font-size: 0.9rem; font-weight: 700; color: #1e3a8a;'>③ 실무 필수 옵션 및 단축키 팁</div>",
+                  "I 키를 누르고 마우스를 움직일 때, 아래 단축키를 눌러 세부 모드를 전환할 수 있습니다. (좌측 하단 Inset Faces 팝업창에서도 조절 가능)"
+                ],
+                table: {
+                  headers: ["단축키", "옵션 이름", "기능 설명"],
+                  rows: [
+                    ["I (한 번 더)", "Individual (개별 인셋)", "여러 면을 선택했을 때 면들을 합치지 않고 각각의 면 안쪽에 따로 인셋을 만듭니다."],
+                    ["B", "Boundary (경계선)", "오브젝트 끝 단의 열린 경계면까지 인셋을 적용할지 여부를 결정합니다."],
+                    ["Ctrl 누른 채 드래그", "Depth (두께/깊이)", "인셋과 동시에 안/밖으로 입체감(Depth)을 함께 주며 밀고 당깁니다."],
+                    ["O", "Outset (아웃셋)", "면의 안쪽이 아니라 바깥쪽으로 면을 확장하여 생성합니다."]
+                  ]
+                }
+              }
+            ]
           },
           {
             step: 3,
-            title: "Boolean 모디파이어로 케이블 홀 타공",
-            desc: "충전 케이블 통과용 실린더(Cylinder)를 생성하고 거치대에 Boolean (Difference) 적용 후 Apply"
+            title: "재질 색상 변경과 간단한 이미지 텍스처 적용",
+            desc: "모델링된 오브젝트에 Material을 추가하여 색상을 지정하고, 외부 이미지를 매핑(Texture)하여 더욱 사실적인 질감을 표현합니다.",
+            subItems: [
+              {
+                subTitle: "1. 재질(Material) 기본 색상 변경하기",
+                subDesc: "오브젝트에 기본 컬러를 지정하고 광택, 반사율 등 기초 속성을 다루는 단계입니다.",
+                details: [
+                  "<div style='display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; margin-top: 0.5rem; margin-bottom: 1rem; background: #fafafa; padding: 1rem; border-radius: 8px; border: 1px solid #cbd5e1; flex-wrap: nowrap;'><div style='flex: 1;'><img src='./images/texture_step1.png' alt='재질 설정 1' style='width: 100%; height: auto; display: block; object-fit: contain; border-radius: 4px; border: 1px solid #e2e8f0;' /></div><div style='flex: 0 0 auto; font-size: 1.5rem; color: #94a3b8; font-weight: bold;'>➔</div><div style='flex: 1;'><img src='./images/texture_step2.png' alt='재질 설정 2' style='width: 100%; height: auto; display: block; object-fit: contain; border-radius: 4px; border: 1px solid #e2e8f0;' /></div><div style='flex: 0 0 auto; font-size: 1.5rem; color: #94a3b8; font-weight: bold;'>➔</div><div style='flex: 1;'><img src='./images/texture_step3.png' alt='재질 설정 3' style='width: 100%; height: auto; display: block; object-fit: contain; border-radius: 4px; border: 1px solid #e2e8f0;' /></div></div>",
+                  "<div style='font-size: 0.9rem; font-weight: 700; color: #1e3a8a; margin-top: 0.4rem;'>🛠️ 실행 단계</div>",
+                  "- <b>오브젝트 선택</b>: 색을 바꿀 개체를 클릭합니다.",
+                  "- <b>재질 속성 탭 이동</b>: 우측 속성 패널에서 지구본/공 모양 아이콘 (Material Properties)을 클릭합니다.",
+                  "<div style='border-radius: 6px; overflow: hidden; border: 1px solid #cbd5e1; padding: 0.3rem; background: #fafafa; max-width: 250px; margin: 0.5rem 0 0.5rem 1rem;'><img src='./images/material_properties_tab.png' alt='Material Properties 탭' style='width: 100%; display: block; height: auto; object-fit: contain;' /></div>",
+                  "- <b>새 재질 생성</b>: New(새로 만들기) 버튼을 누릅니다.",
+                  "- <b>색상 변경 (Base Color)</b>: Base Color(기본 색상) 입력란을 클릭하고 원하는 색상을 선택합니다.",
+                  "- <b>뷰포트 표시 설정</b>: 3D 화면 우측 상단에서 Viewport Shading 모드를 세 번째(Material Preview)나 네 번째(Rendered)로 변경해야 적용된 색상이 눈에 보입니다. (기본 Solid 모드에서는 보이지 않음)",
+                  "<div style='border-radius: 6px; overflow: hidden; border: 1px solid #cbd5e1; padding: 0.3rem; background: #fafafa; max-width: 250px; margin: 0.5rem 0 0.5rem 1rem;'><img src='./images/viewport_shading.png' alt='Viewport Shading' style='width: 100%; display: block; height: auto; object-fit: contain;' /></div>",
+                  "<div style='font-size: 0.9rem; font-weight: 700; color: #1e3a8a; margin-top: 1.5rem;'>💡 주요 재질 속성 팁</div>",
+                  "- <b>Roughness (거칠기)</b>: 값을 0에 가깝게 내리면 유리/금속처럼 반짝이고, 1에 가깝게 올리면 고무/천처럼 매끄럽지 않은 광택이 됩니다.",
+                  "- <b>Metallic (금속성)</b>: 값을 1로 올리면 차갑고 반사율이 높은 금속 질감으로 바뀝니다."
+                ]
+              },
+              {
+                subTitle: "2. 외부 이미지 텍스처(Texture) 적용하기",
+                subDesc: "나무, 벽돌, 캐릭터 피부, 사진 등 외부 이미지 파일(.png, .jpg)을 오브젝트 표면에 래핑하듯 입히는 방법입니다.",
+                details: [
+                  "<div style='font-size: 0.9rem; font-weight: 700; color: #1e3a8a; margin-top: 0.4rem;'>🛠️ 실행 단계</div>",
+                  "- Material Properties 탭에서 생성된 재질의 <b>Base Color</b> 항목을 찾습니다.",
+                  "- Base Color 옆의 <b>'노란색 동그라미 아이콘'</b>을 클릭합니다.",
+                  "- 메뉴 목록 중 <b>Image Texture (이미지 텍스처)</b>를 선택합니다. (Base Color란이 노란색으로 변경됨)",
+                  "- 새로 생긴 <b>Open (열기)</b> 버튼을 누르고 준비한 이미지 파일(.jpg / .png)을 불러옵니다.",
+                  "- 3D 화면에서 불러온 이미지가 오브젝트 형태에 맞게 입혀진 것을 확인합니다.",
+                  "<div style='display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; margin-top: 1rem; margin-bottom: 0.5rem; background: #fafafa; padding: 1rem; border-radius: 8px; border: 1px solid #cbd5e1; flex-wrap: nowrap;'><div style='flex: 1;'><img src='./images/texture_result1.png' alt='텍스처 적용 결과 1' style='width: 100%; height: auto; display: block; object-fit: contain; border-radius: 4px; border: 1px solid #e2e8f0;' /></div><div style='flex: 1;'><img src='./images/texture_result2.png' alt='텍스처 적용 결과 2' style='width: 100%; height: auto; display: block; object-fit: contain; border-radius: 4px; border: 1px solid #e2e8f0;' /></div></div>"
+                ]
+              }
+            ]
           },
           {
             step: 4,
-            title: "모서리 챔퍼링 및 하중 안정성 검토",
-            desc: "3D 프린터 출력 시 출력물이 넘어가지 않도록 무게중심 테스트 및 모서리 베벨 정리"
+            title: "스마트폰 거치대 모델링",
+            desc: "지금까지 배운 돌출, 인셋, 베벨 등의 모델링 기법들을 종합하여 3D 프린터로 출력할 수 있는 실용적인 스마트폰 거치대를 직접 만들어 봅니다."
           }
         ],
         hotkeys: [
